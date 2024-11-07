@@ -11,6 +11,7 @@ export type Opts = {
   "cache-source"?: string
   /** @deprecated Use `cache-map` instead */
   "cache-target"?: string
+  "builder"?: string
 }
 
 export function parseOpts(args: string[]): mri.Argv<Opts> {
@@ -124,4 +125,8 @@ export function getMountArgsString(cacheOptions: CacheOptions): string {
     const otherOptions = Object.entries(cacheOptions).map(([key, value]) => `${key}=${value}`).join(",");
     return `type=cache,${otherOptions}`;
   }
+}
+
+export function getBuilder(opts: Opts): string {
+    return opts["builder"] == null || opts["builder"] == "" ? "default" : opts["builder"];
 }
