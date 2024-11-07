@@ -1297,7 +1297,6 @@ FROM busybox:1
 COPY buildstamp buildstamp
 RUN --mount=${mountArgs} \
     --mount=type=bind,source=.,target=/var/dance-cache \
-    ls -alh ${targetPath} && \
     cp -p -R /var/dance-cache/. ${targetPath} ${ownershipCommand} || true
 `;
     await (0, $evV72$fspromises).writeFile((0, $evV72$path).join(scratchDir, "Dancefile.inject"), dancefileContent);
@@ -1353,7 +1352,6 @@ FROM busybox:1
 COPY buildstamp buildstamp
 RUN --mount=${mountArgs} \
     mkdir -p /var/dance-cache/ \
-    ls -alh ${targetPath} && \
     && cp -p -R ${targetPath}/. /var/dance-cache/ || true
 `;
     await (0, $evV72$fspromises).writeFile((0, $evV72$path).join(scratchDir, "Dancefile.extract"), dancefileContent);
