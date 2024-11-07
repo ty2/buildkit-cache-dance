@@ -19,6 +19,9 @@ inputs:
   save-always:
     default: "false"
     description: "Run the post step to save the cache even if another step before fails"
+  builder:
+    default: "default"
+    description: "The name of the builder to use for the cache injection"
 runs:
   using: 'node20'
   main: 'dist/index.js'
