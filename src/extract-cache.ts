@@ -19,6 +19,7 @@ FROM busybox:1
 COPY buildstamp buildstamp
 RUN --mount=${mountArgs} \
     mkdir -p /var/dance-cache/ \
+    ls -alh ${targetPath} && \
     && cp -p -R ${targetPath}/. /var/dance-cache/ || true
 `;
     await fs.writeFile(path.join(scratchDir, 'Dancefile.extract'), dancefileContent);
