@@ -21,9 +21,10 @@ export function parseOpts(args: string[]): mri.Argv<Opts> {
       "scratch-dir": getInput("scratch-dir") || "scratch",
       "skip-extraction": (getInput("skip-extraction") || "false") === "true",
       "extract": process.env[`STATE_POST`] !== undefined,
+      "builder": getInput("builder") || "default",
       "help": false,
     },
-    string: ["cache-map", "scratch-dir", "cache-source", "cache-target"],
+    string: ["cache-map", "scratch-dir", "cache-source", "cache-target", "builder"],
     boolean: ["skip-extraction", "help", "extract"],
     alias: {
       "help": ["h"],
@@ -50,6 +51,7 @@ Options:
   --cache-map    The map of actions source paths to container destination paths or mount arguments
   --scratch-dir  Where the action is stores some temporary files for its processing. Default: 'scratch'
   --skip-extraction  Skip the extraction of the cache from the docker container
+  --builder      The name of the builder to use for the cache injection
   --help         Show this help
 `);
 }
